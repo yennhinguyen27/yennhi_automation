@@ -7,9 +7,10 @@ from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 
 class TestLogin(BaseTest):
+    
     def test_login(self):
         loginpage = LoginPage(self.driver)
-        loginpage.test_login()
+        loginpage.login("Admin", "admin123")
         
         dashboardpage = DashboardPage(self.driver)
         assert dashboardpage.is_dashboard_displayed() is True
