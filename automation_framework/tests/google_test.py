@@ -6,7 +6,7 @@ def read_csv_data(file_path):
     with open(file_path, mode="r") as file:
         reader=csv.DictReader(file)
         return [row["keyword"] for row in reader]
-
+#kkkkk
 #call the function to read data for CSV
 # test_data = read_csv_data('./data/data_test.csv')
 
