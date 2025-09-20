@@ -4,6 +4,7 @@ from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
 import pytest
 
 class BasePage:
@@ -20,14 +21,27 @@ class BasePage:
         element.send_keys(value)
         
      
-    # def dropdown (self, xpath, value):
-    #     element = self.get_element(xpath)
-    #     select = Select(element)
-    #     return select.select_by_value(value)
+    def select_text_from_dropdown (self, xpath, value):
+        element = WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(xpath)).click()
+        select = Select(element)
+        select.select_by_visible_text(value)
+    
+    
+    def select_by_java_script(self, xpath):
+        self.driver.execute_script("arguments[0].click();", xpath)
+    
+    
+     
         
-    # def wait_for(self, condition, locator):
-    #     wait = WebDriverWait (self.driver, 10)
-    #     return wait.until(condition(locator))
+        
+                   
+    
+    
+
+
+
+
+
     
      
         
